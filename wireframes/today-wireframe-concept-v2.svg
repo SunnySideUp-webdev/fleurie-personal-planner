@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1024" viewBox="0 0 1440 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Today dashboard wireframe</title>
+  <desc id="desc">Desktop wireframe for a personal planner Today dashboard with sidebar, mood, focus, agenda, habits, outfit, workout, savings and journal widgets.</desc>
+  <defs>
+    <style>
+      .bg{fill:url(#bgGradient)}.surface{fill:#F5EDE3}.surface-2{fill:#EDE3D7}.pink{fill:#EBB4B2}.green-soft{fill:#D7D799}.olive{fill:#70702E}.rose{fill:#B46C72}.ink{fill:#27251F}.muted{fill:#6F665D}
+      .stroke{stroke:#BDAF9F;stroke-width:1.25}.stroke-dark{stroke:#27251F;stroke-width:1.6}.line{stroke:#D3C6B8;stroke-width:1}.olive-line{stroke:#70702E;stroke-width:2}
+      .title{font:600 48px 'Playfair Display','Bodoni 72',Georgia,serif;fill:#27251F}.h1{font:600 27px 'Playfair Display','Bodoni 72',Georgia,serif;fill:#27251F}.h2{font:600 18px 'Playfair Display','Bodoni 72',Georgia,serif;fill:#27251F}.body{font:400 14px Poppins,'Avenir Next',Arial,sans-serif;fill:#27251F}.small{font:400 12px 'DM Sans','Avenir Next',Arial,sans-serif;fill:#6F665D}.label{font:600 11px Poppins,'Avenir Next',Arial,sans-serif;fill:#6F665D;letter-spacing:1.8px}.nav{font:400 15px Poppins,'Avenir Next',Arial,sans-serif;fill:#524D46}.num{font:600 22px 'Playfair Display','Bodoni 72',Georgia,serif;fill:#27251F}.script{font:400 17px 'Snell Roundhand','Segoe Script',cursive;fill:#67594F}
+      .card{fill:#F8F1E9;stroke:#BDAF9F;stroke-width:1.25}.round{stroke-linecap:round;stroke-linejoin:round}.dash{stroke-dasharray:6 5}
+    </style>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E9DED0"/><stop offset=".52" stop-color="#EEE7DD"/><stop offset="1" stop-color="#E4D8CA"/>
+    </linearGradient>
+    <radialGradient id="blushGlow"><stop offset="0" stop-color="#EBB4B2" stop-opacity=".48"/><stop offset="1" stop-color="#EBB4B2" stop-opacity="0"/></radialGradient>
+    <radialGradient id="sageGlow"><stop offset="0" stop-color="#9CA469" stop-opacity=".34"/><stop offset="1" stop-color="#9CA469" stop-opacity="0"/></radialGradient>
+    <linearGradient id="paperPink" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F3D4D1"/><stop offset="1" stop-color="#E9BCB9"/></linearGradient>
+    <pattern id="paperLines" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M0 15.5h16" stroke="#B46C72" stroke-opacity=".13"/></pattern>
+    <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="2" seed="8" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="gray"/>
+      <feComponentTransfer in="gray" result="soft"><feFuncA type="table" tableValues="0 .045"/></feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="soft" mode="multiply"/>
+    </filter>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="5" stdDeviation="9" flood-color="#67594F" flood-opacity=".16"/>
+    </filter>
+    <filter id="paperShadow" x="-15%" y="-20%" width="130%" height="150%"><feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#67594F" flood-opacity=".18"/></filter>
+    <symbol id="check" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <path d="m8 12 2.6 2.7L16.5 9" fill="none" stroke="currentColor" stroke-width="1.7" class="round"/>
+    </symbol>
+    <symbol id="home" viewBox="0 0 24 24">
+      <path d="M3.5 11.2 12 4l8.5 7.2v8.3h-5.2v-5.8H8.7v5.8H3.5z" fill="none" stroke="currentColor" stroke-width="1.7" class="round"/>
+    </symbol>
+    <symbol id="calendar" viewBox="0 0 24 24">
+      <rect x="3" y="5.5" width="18" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M7 3v5M17 3v5M3 10h18" fill="none" stroke="currentColor" stroke-width="1.7"/>
+    </symbol>
+    <symbol id="leaf" viewBox="0 0 24 24">
+      <path d="M20 4C11 4 5 8 5 15c0 3 2 5 5 5 7 0 10-7 10-16Z" fill="none" stroke="currentColor" stroke-width="1.7" class="round"/><path d="M4 21c2-5 6-9 12-12" fill="none" stroke="currentColor" stroke-width="1.7" class="round"/>
+    </symbol>
+    <symbol id="hanger" viewBox="0 0 24 24">
+      <path d="M10 6a2 2 0 1 1 3 1.7c-1 .6-1 1.2-1 2.3L3.5 17h17L12 10" fill="none" stroke="currentColor" stroke-width="1.7" class="round"/>
+    </symbol>
+    <symbol id="wallet" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M15 11h6v5h-6a2.5 2.5 0 0 1 0-5Z" fill="none" stroke="currentColor" stroke-width="1.7"/>
+    </symbol>
+    <symbol id="book" viewBox="0 0 24 24">
+      <path d="M4 5.5c3.5-.7 6 .2 8 2.2v12c-2-2-4.5-2.9-8-2.2Zm16 0c-3.5-.7-6 .2-8 2.2v12c2-2 4.5-2.9 8-2.2Z" fill="none" stroke="currentColor" stroke-width="1.7" class="round"/>
+    </symbol>
+    <symbol id="list" viewBox="0 0 24 24">
+      <path d="M9 6h12M9 12h12M9 18h12" stroke="currentColor" stroke-width="1.7" class="round"/><circle cx="4.5" cy="6" r="1" fill="currentColor"/><circle cx="4.5" cy="12" r="1" fill="currentColor"/><circle cx="4.5" cy="18" r="1" fill="currentColor"/>
+    </symbol>
+  </defs>
+
+  <rect width="1440" height="1024" class="bg"/>
+  <ellipse cx="1215" cy="132" rx="310" ry="190" fill="url(#blushGlow)"/>
+  <ellipse cx="760" cy="4" rx="310" ry="155" fill="url(#sageGlow)"/>
+  <rect x="198" y="0" width="1242" height="1024" fill="#EEE7DD" opacity=".08" filter="url(#grain)"/>
+
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="198" height="1024" fill="#F3EADF"/>
+  <line x1="198" y1="0" x2="198" y2="1024" class="line"/>
+  <text x="34" y="65" font-family="'Bodoni 72',Georgia,serif" font-size="31" class="ink">N°A</text>
+  <text x="161" y="61" font-family="Georgia,serif" font-size="23" class="rose">✦</text>
+
+  <g transform="translate(20 103)">
+    <rect width="158" height="48" rx="13" fill="#D7D799" opacity=".63"/>
+    <g color="#70702E"><use href="#home" x="14" y="12" width="24" height="24"/></g><text x="53" y="30" class="nav" fill="#70702E">Today</text>
+  </g>
+  <g transform="translate(20 167)" color="#524D46"><use href="#calendar" x="14" y="10" width="24" height="24"/><text x="53" y="28" class="nav">Planner</text></g>
+  <g transform="translate(20 220)" color="#524D46"><use href="#leaf" x="14" y="10" width="24" height="24"/><text x="53" y="28" class="nav">Lifestyle</text></g>
+  <g transform="translate(20 273)" color="#524D46"><use href="#hanger" x="14" y="10" width="24" height="24"/><text x="53" y="28" class="nav">Studio</text></g>
+  <g transform="translate(20 326)" color="#524D46"><use href="#wallet" x="14" y="10" width="24" height="24"/><text x="53" y="28" class="nav">Money</text></g>
+  <g transform="translate(20 379)" color="#524D46"><use href="#book" x="14" y="10" width="24" height="24"/><text x="53" y="28" class="nav">Journal</text></g>
+  <g transform="translate(20 432)" color="#524D46"><use href="#list" x="14" y="10" width="24" height="24"/><text x="53" y="28" class="nav">Lists</text></g>
+
+  <g transform="translate(20 941)">
+    <rect width="158" height="59" rx="19" class="surface-2 stroke"/>
+    <circle cx="31" cy="29.5" r="19" fill="#C7BEB3"/><text x="23" y="35" font-family="Arial" font-size="16" class="ink">S</text>
+    <text x="59" y="35" class="body">Sunny</text>
+    <circle cx="135" cy="29.5" r="10" fill="none" class="stroke-dark"/><circle cx="135" cy="29.5" r="3" class="ink"/>
+  </g>
+
+  <!-- Header -->
+  <g transform="translate(581 31) rotate(-2 112 53)" filter="url(#paperShadow)">
+    <path d="M5 8 218 0l8 94L0 103Z" fill="#F0E2D4"/>
+    <rect x="0" y="0" width="226" height="103" fill="url(#paperLines)" opacity=".65"/>
+    <path d="M85 -6h58l5 18H81Z" fill="#D9C1A8" opacity=".7"/>
+    <text x="113" y="44" text-anchor="middle" class="script">same girl,</text><text x="113" y="67" text-anchor="middle" class="script">brighter days ♡</text>
+  </g>
+  <g transform="translate(846 12)" opacity=".86">
+    <path d="M34 148C67 93 82 48 94 7M68 94c-23-16-31-36-26-58M73 78c22-11 34-27 39-49M52 116c-17-8-29-20-34-36" fill="none" stroke="#70702E" stroke-width="2" class="round"/>
+    <ellipse cx="40" cy="37" rx="10" ry="23" transform="rotate(-38 40 37)" fill="#9CA469" opacity=".76"/>
+    <ellipse cx="110" cy="29" rx="10" ry="23" transform="rotate(38 110 29)" fill="#9CA469" opacity=".7"/>
+    <ellipse cx="18" cy="79" rx="9" ry="20" transform="rotate(-44 18 79)" fill="#D7D799" opacity=".9"/>
+    <path d="M92 10c-9 18 4 30 16 29 14-1 20-17 7-28-8-7-17-7-23-1Z" fill="#EBB4B2" stroke="#B46C72" stroke-opacity=".45"/>
+  </g>
+  <text x="820" y="154" font-family="Georgia,serif" font-size="22" class="rose">✦</text>
+  <text x="232" y="56" class="label">SUNDAY, OCTOBER 5, 2026</text>
+  <text x="232" y="99" class="h1">Good morning,</text>
+  <text x="232" y="151" class="title">Sunny</text><text x="354" y="148" font-family="Georgia,serif" font-size="35" class="rose">♡</text>
+  <text x="455" y="151" class="script">a calmer, happier day ♡</text>
+
+  <g transform="translate(1081 30)">
+    <rect width="126" height="48" rx="16" class="olive"/>
+    <path d="M25 24h16M33 16v16" stroke="#fff" stroke-width="1.8" class="round"/><text x="53" y="30" font-family="Arial" font-size="15" fill="#fff">Add</text>
+  </g>
+  <g transform="translate(1229 30)"><circle cx="24" cy="24" r="24" class="surface-2"/><path d="M18 28h12M20 27v-7a4 4 0 0 1 8 0v7" fill="none" class="stroke-dark round"/><circle cx="24" cy="31" r="1.8" class="ink"/></g>
+  <g transform="translate(1295 30)"><circle cx="24" cy="24" r="24" class="surface-2"/><circle cx="24" cy="24" r="7" fill="none" class="stroke-dark"/><path d="M24 12v4M24 32v4M12 24h4M32 24h4M15.5 15.5l3 3M29.5 29.5l3 3M32.5 15.5l-3 3M18.5 29.5l-3 3" class="stroke-dark round"/></g>
+
+  <!-- Mood card -->
+  <g transform="translate(222 190)" filter="url(#shadow)">
+    <rect width="372" height="248" rx="18" fill="#F8EEE8" class="stroke"/>
+    <circle cx="28" cy="29" r="9" class="pink"/><text x="48" y="35" class="h2">How are you feeling today?</text><text x="339" y="35" class="body">•••</text>
+    <g transform="translate(27 66)">
+      <g><circle cx="31" cy="31" r="27" fill="#E7D9CF"/><path d="M20 38q11-9 22 0M22 25h1M39 25h1" fill="none" class="stroke-dark round"/></g>
+      <g transform="translate(65)"><circle cx="31" cy="31" r="27" class="pink"/><path d="M21 35q10 11 20 0M22 25h1M39 25h1" fill="none" class="stroke-dark round"/></g>
+      <g transform="translate(130)"><circle cx="31" cy="31" r="27" fill="#D8C6B7"/><path d="M21 36q10 8 20 0M22 25h1M39 25h1" fill="none" class="stroke-dark round"/></g>
+      <g transform="translate(195)"><circle cx="31" cy="31" r="30" fill="none" class="olive-line"/><circle cx="31" cy="31" r="25" class="green-soft"/><path d="M21 35q10 11 20 0M22 25h1M39 25h1" fill="none" class="stroke-dark round"/></g>
+      <g transform="translate(260)"><circle cx="31" cy="31" r="27" fill="#D4D6C2"/><path d="M21 34q10 13 20 0M22 25h1M39 25h1" fill="none" class="stroke-dark round"/></g>
+    </g>
+    <rect x="22" y="145" width="328" height="78" rx="14" class="pink" opacity=".7"/>
+    <text x="40" y="178" font-family="Georgia,serif" font-size="15" font-style="italic" class="muted">Add a short mood note…</text>
+    <path d="M320 190h12M326 184v12" class="olive-line round"/>
+  </g>
+
+  <!-- Focus card -->
+  <g transform="translate(612 190)" filter="url(#shadow)">
+    <rect width="372" height="248" rx="18" fill="#F6F1E5" class="stroke"/>
+    <circle cx="28" cy="29" r="10" fill="none" class="stroke-dark"/><circle cx="28" cy="29" r="4" class="olive"/><text x="48" y="35" class="h2">Today’s focus</text><text x="339" y="35" class="body">•••</text>
+    <g transform="translate(25 61)" color="#70702E"><use href="#check" width="25" height="25"/><text x="39" y="18" class="body">Finish university assignment</text></g>
+    <line x1="26" y1="98" x2="346" y2="98" class="line"/>
+    <g transform="translate(25 104)" color="#70702E"><use href="#check" width="25" height="25"/><text x="39" y="18" class="body">30 min walk</text></g>
+    <line x1="26" y1="141" x2="346" y2="141" class="line"/>
+    <g transform="translate(25 147)" color="#C7BEB3"><use href="#check" width="25" height="25"/><text x="39" y="18" class="body">Clean desk</text></g>
+    <line x1="26" y1="184" x2="346" y2="184" class="line"/>
+    <text x="29" y="219" font-family="Arial" font-size="24" class="muted">＋</text><text x="63" y="216" class="small">Add task</text><text x="330" y="219" font-family="Georgia" font-size="25" class="rose">☆</text>
+  </g>
+
+  <!-- Agenda card -->
+  <g transform="translate(1002 190)" filter="url(#shadow)">
+    <rect width="416" height="248" rx="18" fill="#F8EFE8" class="stroke"/>
+    <g color="#27251F"><use href="#calendar" x="22" y="18" width="23" height="23"/></g><text x="55" y="35" class="h2">Today</text><text x="381" y="35" class="body">•••</text>
+    <line x1="47" y1="68" x2="47" y2="212" class="line"/>
+    <circle cx="47" cy="72" r="4" class="olive"/><text x="67" y="77" class="small">09:00</text><circle cx="147" cy="72" r="6" class="olive"/><text x="165" y="77" class="body">Work (Office)</text>
+    <circle cx="47" cy="116" r="4" class="pink"/><text x="67" y="121" class="small">12:00</text><circle cx="147" cy="116" r="6" class="rose"/><text x="165" y="121" class="body">Lunch</text>
+    <circle cx="47" cy="160" r="4" class="green-soft"/><text x="67" y="165" class="small">14:00</text><circle cx="147" cy="160" r="6" fill="#9CA469"/><text x="165" y="165" class="body">Study</text>
+    <circle cx="47" cy="204" r="4" class="pink"/><text x="67" y="209" class="small">18:30</text><circle cx="147" cy="204" r="6" class="rose"/><text x="165" y="209" class="body">Workout</text>
+  </g>
+
+  <!-- Habit card -->
+  <g transform="translate(222 458)" filter="url(#shadow)">
+    <rect width="372" height="334" rx="18" fill="#F6F2E8" class="stroke"/>
+    <g color="#27251F"><use href="#leaf" x="19" y="17" width="25" height="25"/></g><text x="52" y="35" class="h2">Habit tracker</text><text x="339" y="35" class="body">•••</text>
+    <text x="202" y="65" class="small">M</text><text x="238" y="65" class="small">T</text><text x="274" y="65" class="small">W</text><text x="310" y="65" class="small">T</text><text x="346" y="65" class="small">F</text>
+    <g class="body">
+      <text x="28" y="101">Skincare</text><text x="28" y="145">Drink water</text><text x="28" y="189">Exercise</text><text x="28" y="233">Read</text><text x="28" y="277">No soda</text><text x="28" y="321">Journal</text>
+    </g>
+    <g color="#70702E">
+      <use href="#check" x="194" y="82" width="21" height="21"/><use href="#check" x="230" y="82" width="21" height="21"/><use href="#check" x="266" y="82" width="21" height="21"/><use href="#check" x="302" y="82" width="21" height="21"/><use href="#check" x="338" y="82" width="21" height="21"/>
+      <use href="#check" x="194" y="126" width="21" height="21"/><use href="#check" x="230" y="126" width="21" height="21"/><use href="#check" x="266" y="126" width="21" height="21"/><use href="#check" x="302" y="126" width="21" height="21"/>
+      <use href="#check" x="194" y="170" width="21" height="21"/><use href="#check" x="230" y="170" width="21" height="21"/>
+      <use href="#check" x="194" y="214" width="21" height="21"/><use href="#check" x="230" y="214" width="21" height="21"/><use href="#check" x="266" y="214" width="21" height="21"/>
+      <use href="#check" x="194" y="258" width="21" height="21"/><use href="#check" x="230" y="258" width="21" height="21"/>
+      <use href="#check" x="194" y="302" width="21" height="21"/>
+    </g>
+    <g color="#C7BEB3">
+      <use href="#check" x="338" y="126" width="21" height="21"/><use href="#check" x="266" y="170" width="21" height="21"/><use href="#check" x="302" y="170" width="21" height="21"/><use href="#check" x="338" y="170" width="21" height="21"/><use href="#check" x="302" y="214" width="21" height="21"/><use href="#check" x="338" y="214" width="21" height="21"/><use href="#check" x="266" y="258" width="21" height="21"/><use href="#check" x="302" y="258" width="21" height="21"/><use href="#check" x="338" y="258" width="21" height="21"/><use href="#check" x="230" y="302" width="21" height="21"/><use href="#check" x="266" y="302" width="21" height="21"/><use href="#check" x="302" y="302" width="21" height="21"/><use href="#check" x="338" y="302" width="21" height="21"/>
+    </g>
+  </g>
+
+  <!-- Outfit card -->
+  <g transform="translate(612 458)" filter="url(#shadow)">
+    <rect width="372" height="334" rx="18" fill="url(#paperPink)" class="stroke"/>
+    <g color="#27251F"><use href="#hanger" x="19" y="17" width="25" height="25"/></g><text x="52" y="35" class="h2">Today’s outfit</text><text x="340" y="35" class="body">↗</text>
+    <rect x="22" y="58" width="328" height="252" rx="13" fill="#F8EBE8" class="stroke"/>
+    <rect x="40" y="76" width="138" height="101" rx="10" fill="none" class="stroke dash"/><text x="78" y="130" class="small">TOP IMAGE</text>
+    <rect x="193" y="76" width="139" height="216" rx="10" fill="none" class="stroke dash"/><text x="232" y="188" class="small">BOTTOM</text>
+    <rect x="40" y="192" width="138" height="100" rx="10" fill="none" class="stroke dash"/><text x="73" y="245" class="small">SHOES / BAG</text>
+    <text x="57" y="101" font-family="Georgia" font-size="21" class="rose">✦</text><text x="298" y="276" font-family="Georgia" font-size="24" class="rose">♡</text>
+  </g>
+
+  <!-- Workout card -->
+  <g transform="translate(1002 458)" filter="url(#shadow)">
+    <rect width="416" height="334" rx="18" fill="#F3F0E1" class="stroke"/>
+    <text x="24" y="36" font-family="Arial" font-size="22" class="ink">⌁</text><text x="55" y="35" class="h2">Workout</text>
+    <circle cx="378" cy="31" r="21" fill="#DED8CF"/><path d="m372 21 15 10-15 10z" class="ink"/>
+    <text x="27" y="78" class="body" font-weight="600">Lower body</text><text x="323" y="78" class="small">3 / 5 exercises</text>
+    <rect x="27" y="94" width="362" height="8" rx="4" fill="#DED8CF"/><rect x="27" y="94" width="225" height="8" rx="4" class="olive"/>
+    <g color="#70702E"><use href="#check" x="26" y="127" width="24" height="24"/><use href="#check" x="26" y="171" width="24" height="24"/></g>
+    <g color="#C7BEB3"><use href="#check" x="26" y="215" width="24" height="24"/><use href="#check" x="26" y="259" width="24" height="24"/><use href="#check" x="26" y="303" width="24" height="24"/></g>
+    <text x="66" y="144" class="body">Squats</text><text x="343" y="144" class="small">3 × 12</text>
+    <text x="66" y="188" class="body">RDL</text><text x="343" y="188" class="small">3 × 10</text>
+    <text x="66" y="232" class="body">Hip thrust</text><text x="343" y="232" class="small">3 × 10</text>
+    <text x="66" y="276" class="body">Leg press</text><text x="343" y="276" class="small">3 × 12</text>
+    <text x="66" y="320" class="body">Abductors</text><text x="343" y="320" class="small">3 × 15</text>
+  </g>
+
+  <!-- Bottom cards -->
+  <g transform="translate(222 812)" filter="url(#shadow)">
+    <rect width="372" height="174" rx="18" fill="#F8EFE8" class="stroke"/>
+    <text x="22" y="35" font-family="Georgia" font-size="21" class="olive">♧</text><text x="52" y="35" class="h2">Savings</text><text x="338" y="36" font-family="Georgia" font-size="21" class="muted">♡</text>
+    <rect x="22" y="58" width="88" height="88" rx="12" class="pink"/><rect x="35" y="71" width="62" height="62" rx="8" fill="none" class="stroke dash"/><text x="48" y="106" class="small">IMAGE</text>
+    <text x="129" y="81" class="body" font-weight="600">New headphones</text><text x="129" y="108" class="body">Q620 / Q900</text>
+    <rect x="129" y="126" width="183" height="8" rx="4" fill="#DED8CF"/><rect x="129" y="126" width="126" height="8" rx="4" class="olive"/><text x="322" y="134" class="small">69%</text>
+  </g>
+  <g transform="translate(612 812)" filter="url(#shadow)">
+    <rect width="372" height="174" rx="18" fill="url(#paperPink)" class="stroke"/>
+    <g color="#27251F"><use href="#book" x="20" y="16" width="24" height="24"/></g><text x="52" y="35" class="h2">Quick journal</text><text x="339" y="35" class="body">•••</text>
+    <rect x="22" y="57" width="328" height="94" rx="14" class="surface"/>
+    <text x="38" y="87" class="small">What’s on your mind today?</text><circle cx="319" cy="122" r="17" class="rose"/><path d="m312 122 14 0m-5-5 5 5-5 5" stroke="#fff" stroke-width="1.5" class="round"/>
+  </g>
+  <g transform="translate(1002 812)" filter="url(#shadow)">
+    <rect width="416" height="174" rx="18" fill="#E9E3CF" class="stroke"/>
+    <rect x="0" y="0" width="416" height="174" rx="18" fill="url(#paperLines)" opacity=".42"/>
+    <text x="24" y="35" font-family="Georgia" font-size="20" class="rose">✿</text><text x="55" y="35" class="h2">Little reminder</text><text x="381" y="35" class="body">•••</text>
+    <g color="#70702E"><use href="#check" x="24" y="58" width="19" height="19"/><use href="#check" x="24" y="92" width="19" height="19"/><use href="#check" x="24" y="126" width="19" height="19"/></g>
+    <text x="55" y="72" class="small">Be proud of how far you’ve come</text><text x="55" y="106" class="small">Small steps still count</text><text x="55" y="140" class="small">You are doing enough</text>
+  </g>
+</svg>
