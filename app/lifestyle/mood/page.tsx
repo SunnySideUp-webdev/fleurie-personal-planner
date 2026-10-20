@@ -64,7 +64,7 @@ export default function MoodPage() {
 
   return <main className="app-shell mood-shell">
     <aside className={`sidebar lifestyle-sidebar ${mobileNav ? "is-open" : ""}`}>
-      <div className="brand-row"><img className="brand-logo" src="/daylily-logo.png" alt="Daylily" /><button className="mobile-close" onClick={() => setMobileNav(false)} aria-label="Close navigation"><X /></button></div>
+      <div className="brand-row"><img className="brand-logo" src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/daylily-logo.png`} alt="Daylily" /><button className="mobile-close" onClick={() => setMobileNav(false)} aria-label="Close navigation"><X /></button></div>
       <nav aria-label="Main navigation">{navigation.map(({ label, icon: Icon, href, active }) => <div key={label}><Link href={href} className={`nav-item ${active ? "active" : ""}`}><Icon size={24} strokeWidth={1.7} /><span>{label}</span></Link>{label === "Lifestyle" && <div className="studio-subnav lifestyle-subnav"><Link href="/lifestyle/habits">Habits</Link><Link href="/lifestyle/mood" className="active">Mood</Link><Link href="/lifestyle/routines">Routines + Fitness</Link></div>}</div>)}</nav>
       <div className="sidebar-art-slot lifestyle-sidebar-art" aria-hidden="true">Floral collage</div><Link className="profile-button" href="/"><span className="avatar">S</span><span>Sunny</span><Settings size={20} /></Link>
     </aside>

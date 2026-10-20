@@ -1,5 +1,7 @@
 "use client";
 
+import { setLocalStorageItem } from "@/app/_lib/local-storage";
+
 import { createContext, createElement, ReactNode, useContext, useEffect, useMemo, useState } from "react";
 
 export type RoutineStep = { id: string; label: string; done: boolean };
@@ -131,7 +133,7 @@ export function RoutineDataProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (ready) window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ routines, todayRoutineIds, workoutRoutines, activeWorkoutId, workoutActive, fitnessProfile }));
+    if (ready) setLocalStorageItem(STORAGE_KEY, JSON.stringify({ routines, todayRoutineIds, workoutRoutines, activeWorkoutId, workoutActive, fitnessProfile }));
   }, [routines, todayRoutineIds, workoutRoutines, activeWorkoutId, workoutActive, fitnessProfile, ready]);
 
   const activeWorkout = useMemo(() => workoutRoutines.find((routine) => routine.id === activeWorkoutId) ?? workoutRoutines[0] ?? null, [workoutRoutines, activeWorkoutId]);

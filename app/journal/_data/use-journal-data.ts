@@ -1,5 +1,7 @@
 "use client";
 
+import { setLocalStorageItem } from "@/app/_lib/local-storage";
+
 import { createContext, createElement, ReactNode, useContext, useEffect, useState } from "react";
 
 export type JournalEntryType = "Diary" | "Gratitude" | "Reflection" | "Memory";
@@ -124,7 +126,7 @@ export function JournalDataProvider({ children }: { children: ReactNode }) {
     setReady(true);
   }, []);
 
-  useEffect(() => { if (ready) { try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ entries, tags, prompts })); } catch {} } }, [entries, tags, prompts, ready]);
+  useEffect(() => { if (ready) { try { setLocalStorageItem(STORAGE_KEY, JSON.stringify({ entries, tags, prompts })); } catch {} } }, [entries, tags, prompts, ready]);
   useEffect(() => {
     function receiveQuickEntry(event: Event) {
       const item = (event as CustomEvent<{ id: string; text: string; createdAt: string }>).detail;

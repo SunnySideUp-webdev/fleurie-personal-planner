@@ -1,5 +1,7 @@
 "use client";
 
+import { setLocalStorageItem } from "@/app/_lib/local-storage";
+
 import { createContext, createElement, ReactNode, useContext, useEffect, useMemo, useState } from "react";
 
 export type MoodValue = 0 | 1 | 2 | 3 | 4;
@@ -58,7 +60,7 @@ export function MoodDataProvider({ children }: { children: ReactNode }) {
   }, [todayKey]);
 
   useEffect(() => {
-    if (ready) window.localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+    if (ready) setLocalStorageItem(STORAGE_KEY, JSON.stringify(entries));
   }, [entries, ready]);
 
   const todayEntry = useMemo(() => entries.find((entry) => entry.date === todayKey), [entries, todayKey]);

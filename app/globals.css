@@ -38,6 +38,29 @@ body {
 button, textarea, input { font: inherit; }
 button { color: inherit; }
 
+.storage-warning {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 100;
+  width: min(430px, calc(100vw - 36px));
+  padding: 14px 15px;
+  display: grid;
+  grid-template-columns: 24px 1fr 30px;
+  gap: 10px;
+  align-items: start;
+  border: 1px solid rgba(180, 108, 114, .35);
+  border-radius: 15px;
+  color: var(--ink);
+  background: #faf6f0;
+  box-shadow: 0 14px 36px rgba(55, 45, 36, .2);
+}
+.storage-warning > svg { margin-top: 1px; color: var(--dusty-rose); }
+.storage-warning div { display: grid; gap: 3px; }
+.storage-warning strong { font-size: 12px; }
+.storage-warning span { color: var(--muted); font-size: 10px; line-height: 1.4; }
+.storage-warning button { width: 30px; height: 30px; padding: 0; border: 0; border-radius: 50%; display: grid; place-items: center; background: rgba(235, 180, 178, .24); cursor: pointer; }
+
 .app-shell { min-height: 100vh; display: grid; grid-template-columns: 210px minmax(0, 1fr); }
 
 .sidebar {
@@ -97,7 +120,7 @@ button { color: inherit; }
   pointer-events: none;
   border-block: 0;
   background-color: transparent;
-  background-image: url("/today-vintage-note.png");
+  background-image: var(--asset-today-vintage-note);
   background-position: center 58%;
   background-repeat: no-repeat;
   background-size: 235px auto;
@@ -148,7 +171,7 @@ button { color: inherit; }
   text-indent: -9999px;
   overflow: hidden;
   pointer-events: none;
-  background: url("/today-header-tulips.png") center / contain no-repeat;
+  background: var(--asset-today-header-tulips) center / contain no-repeat;
 }
 
 .header-actions { margin-left: auto; display: flex; gap: 14px; align-items: center; position: relative; z-index: 5; }
@@ -249,7 +272,7 @@ button { color: inherit; }
 .reminder-note label { display: block; margin: 17px 0 0 34px; font-size: 13px; position: relative; z-index: 2; }
 .reminder-note input { accent-color: var(--olive); margin-right: 10px; }
 .reminder-note .card-heading { position: relative; z-index: 3; }
-.reminder-art-slot { position: absolute; z-index: 1; right: -18px; bottom: -24px; width: 158px; height: 164px; overflow: visible; color: transparent; font-size: 0; text-indent: -9999px; pointer-events: none; background: url("/today-reminder-branch.png") right bottom / contain no-repeat; transform: rotate(-3deg); transform-origin: right bottom; }
+.reminder-art-slot { position: absolute; z-index: 1; right: -18px; bottom: -24px; width: 158px; height: 164px; overflow: visible; color: transparent; font-size: 0; text-indent: -9999px; pointer-events: none; background: var(--asset-today-reminder-branch) right bottom / contain no-repeat; transform: rotate(-3deg); transform-origin: right bottom; }
 
 .mobile-menu, .mobile-close, .nav-scrim { display: none; }
 
@@ -364,6 +387,7 @@ button { color: inherit; }
   body { font-size: 15px; }
   .page-header { flex-wrap: wrap; min-height: auto; padding-bottom: 22px; }
   .greeting { width: 100%; }
+  .eyebrow { max-width: calc(100% - 104px); font-size: 10px; letter-spacing: .14em; }
   .greeting h1 { font-size: 27px; }.greeting h1 strong { font-size: 48px; }
   .header-actions { position: absolute; right: 0; top: 26px; }.header-actions .icon-button { display: none; }
   .dashboard-grid { display: grid; grid-template-columns: minmax(0,1fr); grid-template-areas: "mood" "focus" "agenda" "habits" "outfit" "workout" "savings" "journal" "reminder"; }
@@ -445,7 +469,7 @@ button { color: inherit; }
   width: 128px;
   height: 194px;
   pointer-events: none;
-  background: url("/planner-notes-branch.png") center / contain no-repeat;
+  background: var(--asset-planner-notes-branch) center / contain no-repeat;
   transform: rotate(2deg);
   transform-origin: bottom center;
 }
@@ -657,13 +681,13 @@ button { color: inherit; }
   pointer-events: none;
   border-block: 0;
   background-color: transparent;
-  background-image: url("/lifestyle-sidebar-tulips.png");
+  background-image: var(--asset-lifestyle-sidebar-tulips);
   background-position: -28px center;
   background-repeat: no-repeat;
   background-size: 200px auto;
 }
 .habit-statistics-sidebar-art {
-  background-image: url("/lifestyle-statistics-sidebar-botanical.png");
+  background-image: var(--asset-lifestyle-statistics-sidebar);
 }
 .lifestyle-sidebar nav,
 .habit-statistics-shell .sidebar nav { position: relative; z-index: 5; }
@@ -696,7 +720,7 @@ button { color: inherit; }
   width: 132px;
   height: 198px;
   pointer-events: none;
-  background: url("/lifestyle-statistics-branch.png") right bottom / contain no-repeat;
+  background: var(--asset-lifestyle-statistics-branch) right bottom / contain no-repeat;
 }
 .statistics-floral-slot {
   position: relative;
@@ -709,7 +733,7 @@ button { color: inherit; }
   line-height: 0;
   text-indent: -9999px;
   background-color: transparent;
-  background-image: url("/lifestyle-statistics-tulips.png");
+  background-image: var(--asset-lifestyle-statistics-tulips);
   background-position: right center;
   background-repeat: no-repeat;
   background-size: auto 390px;
@@ -1010,7 +1034,7 @@ button { color: inherit; }
   width: 105px;
   height: 158px;
   pointer-events: none;
-  background: url("/studio-header-branch.png") center / contain no-repeat;
+  background: var(--asset-studio-header-branch) center / contain no-repeat;
   transform: scale(-1, -1);
   transform-origin: center;
 }
@@ -1040,7 +1064,7 @@ button { color: inherit; }
   pointer-events: none;
   border-block: 0;
   background-color: transparent;
-  background-image: url("/studio-sidebar-tulips.png");
+  background-image: var(--asset-studio-sidebar-tulips);
   background-position: -32px top;
   background-repeat: no-repeat;
   background-size: 225px auto;
@@ -1302,7 +1326,7 @@ button { color: inherit; }
   pointer-events: none;
   border-block: 0;
   background-color: transparent;
-  background-image: url("/money-sidebar-tulips.png");
+  background-image: var(--asset-money-sidebar-tulips);
   background-position: -32px top;
   background-repeat: no-repeat;
   background-size: 225px auto;
@@ -1911,7 +1935,7 @@ button { color: inherit; }
   pointer-events: none;
   border-block: 0;
   background-color: transparent;
-  background-image: url("/journal-sidebar-tulips.png");
+  background-image: var(--asset-journal-sidebar-tulips);
   background-position: -32px top;
   background-repeat: no-repeat;
   background-size: 225px auto;
@@ -2665,7 +2689,7 @@ button { color: inherit; }
   pointer-events: none;
   border-block: 0;
   background-color: transparent;
-  background-image: url("/lists-sidebar-tulips.png");
+  background-image: var(--asset-lists-sidebar-tulips);
   background-position: -32px top;
   background-repeat: no-repeat;
   background-size: 225px auto;
@@ -2764,7 +2788,7 @@ button { color: inherit; }
   width: 88px;
   height: 124px;
   pointer-events: none;
-  background: url("/lists-notes-branch.png") center bottom / contain no-repeat;
+  background: var(--asset-lists-notes-branch) center bottom / contain no-repeat;
 }
 .notes-flower svg { display: none; }
 .ideas-panel { min-height: 276px; padding: 15px 16px; }
@@ -2943,7 +2967,7 @@ button { color: inherit; }
   pointer-events: none;
   border-block: 0;
   background-color: transparent;
-  background-image: url("/planner-sidebar-tulips.png");
+  background-image: var(--asset-planner-sidebar-tulips);
   background-position: -58px center;
   background-repeat: no-repeat;
   background-size: 210px auto;
@@ -3087,7 +3111,7 @@ button { color: inherit; }
   position: absolute;
   z-index: 2;
   pointer-events: none;
-  background: url("/planner-pink-notes-branch.png") center / contain no-repeat;
+  background: var(--asset-planner-pink-notes-branch) center / contain no-repeat;
   transform: rotate(2deg);
   transform-origin: bottom center;
 }

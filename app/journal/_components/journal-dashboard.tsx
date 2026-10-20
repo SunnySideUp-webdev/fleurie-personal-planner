@@ -548,7 +548,7 @@ export default function JournalDashboard({ view }: { view: JournalView }) {
         className={`sidebar journal-sidebar ${mobileNav ? "is-open" : ""}`}
       >
         <div className="brand-row">
-          <img className="brand-logo" src="/daylily-logo.png" alt="Daylily" />
+          <img className="brand-logo" src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/daylily-logo.png`} alt="Daylily" />
           <button className="mobile-close" onClick={() => setMobileNav(false)}>
             <X />
           </button>

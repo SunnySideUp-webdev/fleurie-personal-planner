@@ -1,5 +1,7 @@
 "use client";
 
+import { setLocalStorageItem } from "@/app/_lib/local-storage";
+
 import { createContext, createElement, ReactNode, useContext, useEffect, useState } from "react";
 
 export type HabitIconType =
@@ -129,8 +131,8 @@ export function HabitDataProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (ready) {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(habits));
-      window.localStorage.setItem(CATEGORY_STORAGE_KEY, JSON.stringify(categories));
+      setLocalStorageItem(STORAGE_KEY, JSON.stringify(habits));
+      setLocalStorageItem(CATEGORY_STORAGE_KEY, JSON.stringify(categories));
     }
   }, [habits, categories, ready]);
 

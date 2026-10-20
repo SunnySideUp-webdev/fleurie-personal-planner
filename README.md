@@ -4,6 +4,18 @@ Fleurie is a browser-based personal planner that brings daily planning, wellbein
 
 > Portfolio status: active personal project. The repository is intended for review and demonstration; it is not currently distributed as an open-source project.
 
+[Open the live GitHub Pages demo](https://sunnysideup-webdev.github.io/fleurie-personal-planner/)
+
+## Preview
+
+### Desktop
+
+![Fleurie Today dashboard on desktop](docs/screenshots/today-desktop.png)
+
+### Mobile
+
+<img src="docs/screenshots/today-mobile.png" alt="Fleurie Today dashboard on mobile" width="390" />
+
 ## Highlights
 
 - **Today:** an integrated daily view for tasks, reminders, habits, mood, routines, a quick journal, a selected outfit, and a featured savings goal.
@@ -22,8 +34,17 @@ Fleurie is a browser-based personal planner that brings daily planning, wellbein
 - `lucide-react` icons
 - Global CSS and static PNG/SVG artwork
 - Browser `localStorage` persistence
+- Installable Progressive Web App (PWA) with offline support for previously opened pages
 
 Fleurie currently has no backend, user accounts, analytics, or cloud database.
+
+## Install as an app
+
+Fleurie includes a web app manifest, dedicated application icons, and a service worker. Once it is deployed over HTTPS, supported browsers can install it as a **Progressive Web App (PWA)** on a computer or mobile home screen.
+
+Previously opened pages and their static resources are cached for offline use. Planner content continues to live in the browser's `localStorage`; installing the PWA does not add cloud synchronization or remote backup.
+
+A PWA still requires web hosting. Fleurie is deployed through GitHub Pages and does not depend on Vercel. Every push to `main` runs a clean static build and publishes the result through the workflow in `.github/workflows/deploy-pages.yml`.
 
 ## Getting started
 
@@ -62,6 +83,8 @@ This also means:
 - uploaded images count toward the browser's storage limit; and
 - local data is not encrypted by Fleurie.
 
+If the browser storage limit is reached, Fleurie keeps running and shows a warning that the latest changes could not be saved.
+
 Fleurie does not yet include a built-in backup or export feature. Do not enter highly sensitive information into a public or shared browser profile.
 
 See [Data storage](docs/DATA_STORAGE.md) for the persistence map and compatibility rules.
@@ -96,12 +119,13 @@ The feature providers are composed in `app/layout.tsx`. Most feature data types 
 - [Public release checklist](docs/RELEASE_CHECKLIST.md)
 - [Contributing](CONTRIBUTING.md)
 - [Security](SECURITY.md)
+- [Third-party notices](THIRD_PARTY_NOTICES.md)
 - [Changelog](CHANGELOG.md)
 
 Development assistants should also read `AGENTS.md`; `CLAUDE.md` imports the same canonical instructions.
 
 ## License
 
-Copyright © 2026 Sunny. All rights reserved.
+Copyright © 2026 Sharon (Sunny) Consuegra. All rights reserved.
 
 The source code and project assets are published for portfolio review only. No permission is granted to copy, modify, redistribute, sublicense, or sell them. See [LICENSE](LICENSE) for the full terms.

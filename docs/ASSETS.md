@@ -8,6 +8,9 @@ Fleurie uses static PNG and SVG artwork from `public/` to build its vintage flor
 
 - `daylily-logo.png` — Fleurie wordmark and floral mark. The filename is retained for compatibility with existing references.
 - `favicon.svg` — browser icon.
+- `icons/icon-192.png` and `icons/icon-512.png` — install icons for the PWA.
+- `icons/maskable-512.png` — full-background icon for adaptive launchers.
+- `icons/apple-touch-icon.png` — iOS home-screen icon.
 
 ### Sidebar compositions
 
@@ -51,6 +54,8 @@ These folders are development artifacts and are not loaded by the running applic
 
 ## Rights and provenance
 
-The repository license does not grant reuse rights for project artwork. Before making the repository public, verify that every image, font, icon, and other visual resource is original, commissioned, or licensed for public redistribution and portfolio display.
+The repository license does not grant reuse rights for project artwork.
 
-The current repository does not contain complete source/provenance records for every PNG or reference image. That verification is therefore a required public-release step. Third-party packages and Lucide icons remain under their own licenses.
+Sharon (Sunny) Consuegra confirmed ownership of the project artwork and reference images on October 19, 2026, and approved them for public portfolio display. Third-party packages and Lucide icons remain under their own licenses; see `THIRD_PARTY_NOTICES.md`.
+
+Some PNG files retain `chatgpt.com` as source metadata because they were created through ChatGPT under Sharon's direction. The metadata contains no private account identifier or local filesystem path.

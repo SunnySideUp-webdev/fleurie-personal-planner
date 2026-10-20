@@ -40,6 +40,7 @@ There is currently no backend, authentication, or remote database. User data and
 - Reusable feature UI belongs in `_components/`; `outfit-miniature.tsx` is the canonical saved-outfit preview.
 - `app/globals.css` contains the shared visual system and most page styling.
 - `public/` contains the Fleurie logo and decorative floral collage assets.
+- `app/manifest.ts`, `app/_components/service-worker-registration.tsx`, and `public/sw.js` provide the installable PWA layer.
 
 ## Data and client-side behavior
 
@@ -51,7 +52,10 @@ There is currently no backend, authentication, or remote database. User data and
 - Today is an integration surface: changes to favorites, quick journal entries, calendar events, savings goals, habits, routines, and outfits must remain consistent with their source feature.
 - Calendar and Today assignments use local `YYYY-MM-DD` date keys. Avoid UTC conversion when it could shift the user's day.
 - Uploaded images are data URLs saved in the browser. Be mindful of `localStorage` size and handle missing images gracefully.
+- Route every `localStorage` write through `app/_lib/local-storage.ts` so quota and privacy-mode failures surface through the global storage warning instead of crashing or failing silently.
 - Preserve canvas coordinates, rotation, size, opacity, z-order, and background color when rendering outfit or journal previews.
+- The service worker must register only in production. Keep its cache limited to application pages and static resources; never duplicate personal `localStorage` records into the Cache API.
+- Bump the service-worker cache name when changing cached shell behavior so obsolete caches are removed during activation.
 
 ## UI conventions
 
@@ -59,7 +63,7 @@ There is currently no backend, authentication, or remote database. User data and
 - Decorative images should generally use transparent PNGs, deliberate layering, and `pointer-events: none` when they are not interactive.
 - Do not add white tiles behind clothing or collage elements unless explicitly requested; saved outfit previews should visually match the editor canvas.
 - Keep controls keyboard-accessible and retain meaningful `aria-label` text on icon-only buttons.
-- The interface currently mixes English and Spanish intentionally. Do not globally translate or normalize copy without a direct request.
+- Keep product navigation, controls, and system feedback in English. Spanish may remain where it represents personal starter content, persisted category names, or user-authored records; do not migrate stored values solely for translation.
 - `globals.css` is shared across the application. Search for every selector use and check related routes before changing broad rules.
 - Design should remain usable at normal browser zoom and responsive widths; screenshots taken at 80% zoom are references, not the target scale.
 

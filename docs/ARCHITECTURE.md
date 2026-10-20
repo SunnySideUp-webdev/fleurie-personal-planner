@@ -64,3 +64,9 @@ Studio outfits and Journal entries store visual placement information instead of
 Most styling is centralized in `app/globals.css`. Broad selector changes can affect unrelated routes, so search for all consumers and verify responsive behavior.
 
 Static branding and decorative compositions are stored in `public/`. User-uploaded content is stored as data URLs in browser storage and is not written into the repository.
+
+## Progressive Web App layer
+
+`app/manifest.ts` defines install metadata and icon references. A small client component in `app/_components/service-worker-registration.tsx` registers `public/sw.js` only in production.
+
+The service worker precaches the minimum application shell and uses runtime caching for same-origin pages and static resources. Navigation remains network-first, with cached pages or Today as the offline fallback. User planner records remain in `localStorage` and are not moved into service-worker caches.

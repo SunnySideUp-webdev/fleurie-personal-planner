@@ -1,5 +1,7 @@
 "use client";
 
+import { setLocalStorageItem } from "@/app/_lib/local-storage";
+
 import { createContext, createElement, ReactNode, useContext, useEffect, useState } from "react";
 
 export type PlannerTask = {
@@ -128,7 +130,7 @@ export function PlannerDataProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!ready) return;
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    setLocalStorageItem(STORAGE_KEY, JSON.stringify(data));
   }, [data, ready]);
 
   const value: PlannerDataContextValue = {

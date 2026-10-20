@@ -1,5 +1,7 @@
 "use client";
 
+import { setLocalStorageItem } from "@/app/_lib/local-storage";
+
 import Link from "next/link";
 import {
   Bell,
@@ -46,6 +48,16 @@ const navigation = [
 
 const plannerTabs = ["Calendar", "Daily", "Weekly", "Monthly", "Quarterly", "Yearly"];
 const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const weeklyHabitNames = ["Skincare", "Drink water", "Exercise", "Read", "No soda", "Journal"];
+const initialHabitMatrix = [5, 4, 3, 2, 1, 1].map((done) =>
+  Array.from({ length: 7 }, (_, day) => day < done),
+);
+
+function normalizeHabitMatrix(matrix: boolean[][]) {
+  return weeklyHabitNames.map((_, habitIndex) =>
+    Array.from({ length: 7 }, (_, day) => Boolean(matrix[habitIndex]?.[day])),
+  );
+}
 
 const emptyDraft: Omit<CalendarEvent, "id" | "week"> = { day: 1, start: 9, duration: 1, title: "", tone: "green", icon: "work" };
 
@@ -126,7 +138,7 @@ export default function PlannerCalendarPage() {
   const [draft, setDraft] = useState(emptyDraft);
   const [search, setSearch] = useState("");
   const [note, setNote] = useState("a more\norganized & happier\nversion of me ♡");
-  const [habitMatrix, setHabitMatrix] = useState(() => [5, 4, 3, 2, 1, 1].map((done) => Array.from({ length: 7 }, (_, day) => day < done)));
+  const [habitMatrix, setHabitMatrix] = useState(initialHabitMatrix);
   const [calendarReady, setCalendarReady] = useState(false);
 
   useEffect(() => {
@@ -138,7 +150,7 @@ export default function PlannerCalendarPage() {
         if (parsed.focusDone) setFocusDone(parsed.focusDone);
         if (parsed.focusItems) setFocusItems(parsed.focusItems);
         if (typeof parsed.note === "string") setNote(parsed.note);
-        if (parsed.habitMatrix) setHabitMatrix(parsed.habitMatrix);
+        if (parsed.habitMatrix) setHabitMatrix(normalizeHabitMatrix(parsed.habitMatrix));
       }
     } catch {
       // Keep the starter calendar if saved data is unavailable.
@@ -148,7 +160,7 @@ export default function PlannerCalendarPage() {
 
   useEffect(() => {
     if (!calendarReady) return;
-    window.localStorage.setItem("noa-calendar-data-v1", JSON.stringify({ events, focusDone, focusItems, note, habitMatrix }));
+    setLocalStorageItem("noa-calendar-data-v1", JSON.stringify({ events, focusDone, focusItems, note, habitMatrix }));
   }, [events, focusDone, focusItems, note, habitMatrix, calendarReady]);
 
   const weekStart = useMemo(() => {
@@ -194,7 +206,7 @@ export default function PlannerCalendarPage() {
   return (
     <main className="app-shell planner-shell">
       <aside className={`sidebar planner-calendar-sidebar ${mobileNav ? "is-open" : ""}`}>
-        <div className="brand-row"><img className="brand-logo" src="/daylily-logo.png" alt="Daylily" /><button className="mobile-close" onClick={() => setMobileNav(false)}><X /></button></div>
+        <div className="brand-row"><img className="brand-logo" src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/daylily-logo.png`} alt="Daylily" /><button className="mobile-close" onClick={() => setMobileNav(false)}><X /></button></div>
         <nav>{navigation.map(({ label, icon: Icon, href, active }) => <div key={label}><Link href={href} className={`nav-item ${active ? "active" : ""}`}><Icon size={24} strokeWidth={1.7} /><span>{label}</span></Link>{label === "Planner" && <div className="studio-subnav planner-module-subnav"><Link href="/planner/calendar" className="active">Calendar</Link><Link href="/planner/planning">Planning</Link><Link href="/planner/tasks">Tasks</Link><Link href="/planner/reminders">Reminders</Link></div>}</div>)}</nav>
         <div className="sidebar-art-slot planner-sidebar-art">Floral collage</div>
         <button className="profile-button" onClick={() => setHeaderPanel("settings")}><span className="avatar">S</span><span>Sunny</span><Settings size={20} /></button>
@@ -237,7 +249,7 @@ export default function PlannerCalendarPage() {
           <aside className="planner-right-rail">
             <section className="planner-card mini-calendar"><div className="mini-month"><button onClick={() => setMiniMonth((value) => value - 1)}><ChevronLeft size={17} /></button><strong>{new Date(2026,9 + miniMonth,1).toLocaleDateString("en-US",{month:"long",year:"numeric"})}</strong><span /><button onClick={() => setMiniMonth(0)}>•</button><button onClick={() => setMiniMonth((value) => value + 1)}><ChevronRight size={17} /></button></div><div className="mini-weekdays">{["S","M","T","W","T","F","S"].map((day,index) => <span key={`${day}-${index}`}>{day}</span>)}</div><div className="mini-days">{Array.from({length:35},(_,index) => { const day=index-3; return <button key={index} className={day===5 && miniMonth===0 ? "selected" : day<1 || day>31 ? "empty" : ""} onClick={() => { if (day > 0 && day <= 31) setWeekOffset(Math.floor((day - 5) / 7)); }}>{day>0 && day<=31 ? day : ""}</button>; })}</div></section>
             <section className="planner-card upcoming-card"><div className="planner-card-title"><span>Upcoming</span><Link className="upcoming-view-all" href="/planner/reminders">View all <span aria-hidden="true">→</span></Link></div>{data.reminders.filter((item) => !item.completed).slice(0,4).map((item) => <Link className="upcoming-row" href="/planner/reminders" key={item.id}><Bell size={18} /><span>{item.title}</span><small>{item.date}{item.time ? `, ${item.time}` : ""}</small></Link>)}</section>
-            <section className="planner-card weekly-habits"><div className="planner-card-title"><span>Habits <small>(this week)</small></span><b>{habitMatrix.filter((days) => days.some(Boolean)).length} / 6</b></div>{["Skincare","Drink water","Exercise","Read","No soda","Journal"].map((habit,habitIndex) => <div className="rail-habit-row" key={habit}><span>{habit}</span>{habitMatrix[habitIndex].map((done,day) => <button key={day} className={done ? "done" : ""} onClick={() => setHabitMatrix((current) => current.map((days,row) => row === habitIndex ? days.map((value,column) => column === day ? !value : value) : days))} aria-label={`${habit} day ${day + 1}`} />)}</div>)}</section>
+            <section className="planner-card weekly-habits"><div className="planner-card-title"><span>Habits <small>(this week)</small></span><b>{habitMatrix.filter((days) => days.some(Boolean)).length} / 6</b></div>{weeklyHabitNames.map((habit,habitIndex) => <div className="rail-habit-row" key={habit}><span>{habit}</span>{habitMatrix[habitIndex].map((done,day) => <button key={day} className={done ? "done" : ""} onClick={() => setHabitMatrix((current) => current.map((days,row) => row === habitIndex ? days.map((value,column) => column === day ? !value : value) : days))} aria-label={`${habit} day ${day + 1}`} />)}</div>)}</section>
             <section className="planner-card quick-add-card"><div className="planner-card-title"><span>Quick add</span>{menu("quick", <><button onClick={() => openNewEvent()}>New event</button><Link href="/planner/tasks">New task</Link></>)}</div><div className="quick-add-grid"><Link href="/planner/tasks"><Target size={19} />Task</Link><button onClick={() => openNewEvent()}><CalendarDays size={19} />Event</button><Link href="/money"><WalletCards size={19} />Expense</Link><Link href="/lifestyle/habits"><Leaf size={19} />Habit</Link><Link href="/journal"><BookOpen size={19} />Journal</Link><Link href="/studio/outfits"><Shirt size={19} />Outfit</Link></div></section>
           </aside>
         </div>

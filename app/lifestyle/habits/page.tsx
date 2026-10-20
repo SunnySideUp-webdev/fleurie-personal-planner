@@ -79,7 +79,7 @@ export default function LifestyleHabitsPage() {
   return (
     <main className="app-shell lifestyle-shell">
       <aside className={`sidebar lifestyle-sidebar ${mobileNav ? "is-open" : ""}`}>
-        <div className="brand-row"><img className="brand-logo" src="/daylily-logo.png" alt="Daylily" /><button className="mobile-close" onClick={() => setMobileNav(false)} aria-label="Close navigation"><X /></button></div>
+        <div className="brand-row"><img className="brand-logo" src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/daylily-logo.png`} alt="Daylily" /><button className="mobile-close" onClick={() => setMobileNav(false)} aria-label="Close navigation"><X /></button></div>
         <nav aria-label="Main navigation">
           {navigation.map(({ label, icon: Icon, href, active }) => (
             <div key={label}>

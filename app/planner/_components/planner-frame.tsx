@@ -52,7 +52,7 @@ export function PlannerFrame({ active, actionLabel, onAdd, children }: { active:
   return (
     <main className="app-shell planner-shell planner-module-shell">
       <aside className={`sidebar planner-module-sidebar ${mobileNav ? "is-open" : ""}`}>
-        <div className="brand-row"><img className="brand-logo" src="/daylily-logo.png" alt="Daylily" /><button className="mobile-close" onClick={() => setMobileNav(false)} aria-label="Close navigation"><X /></button></div>
+        <div className="brand-row"><img className="brand-logo" src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/daylily-logo.png`} alt="Daylily" /><button className="mobile-close" onClick={() => setMobileNav(false)} aria-label="Close navigation"><X /></button></div>
         <nav aria-label="Main navigation">
           {navigation.map(({ label, icon: Icon, href, active: isActive }) => <div key={label}><Link href={href} className={`nav-item ${isActive ? "active" : ""}`}><Icon size={24} strokeWidth={1.7} /><span>{label}</span></Link>{label === "Planner" && <div className="studio-subnav planner-module-subnav">{plannerLinks.map(([name, path]) => <Link key={name} href={path} className={active === name ? "active" : ""}>{name}</Link>)}</div>}</div>)}
         </nav>

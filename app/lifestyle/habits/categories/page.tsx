@@ -107,7 +107,7 @@ export default function HabitCategoriesPage() {
   return (
     <main className="app-shell habit-categories-shell" onClick={() => setOpenMenu(null)}>
       <aside className={`sidebar lifestyle-sidebar ${mobileNav ? "is-open" : ""}`}>
-        <div className="brand-row"><img className="brand-logo" src="/daylily-logo.png" alt="Daylily" /><button className="mobile-close" onClick={() => setMobileNav(false)}><X /></button></div>
+        <div className="brand-row"><img className="brand-logo" src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/daylily-logo.png`} alt="Daylily" /><button className="mobile-close" onClick={() => setMobileNav(false)}><X /></button></div>
         <nav>{navigation.map(({ label, icon: Icon, href, active: navigationActive }) => <div key={label}><Link href={href} className={`nav-item ${navigationActive ? "active" : ""}`}><Icon size={24} /><span>{label}</span></Link>{label === "Lifestyle" && <div className="studio-subnav lifestyle-subnav"><Link href="/lifestyle/habits" className="active">Habits</Link><Link href="/lifestyle/mood">Mood</Link><Link href="/lifestyle/routines">Routines + Fitness</Link></div>}</div>)}</nav>
         <div className="sidebar-art-slot lifestyle-sidebar-art">Floral collage</div>
         <Link className="profile-button" href="/"><span className="avatar">S</span><span>Sunny</span><Settings size={20} /></Link>

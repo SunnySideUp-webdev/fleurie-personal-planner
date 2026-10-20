@@ -1,5 +1,7 @@
 "use client";
 
+import { setLocalStorageItem } from "@/app/_lib/local-storage";
+
 import { createContext, createElement, ReactNode, useContext, useEffect, useState } from "react";
 
 export type MoneyCategory = "Comida" | "Transporte" | "Estudios" | "Personal" | "Ocio" | "Hogar" | "Suscripciones" | "Otros";
@@ -60,7 +62,7 @@ export function MoneyDataProvider({ children }: { children: ReactNode }) {
   const [goals, setGoals] = useState(initialGoals);
   const [ready, setReady] = useState(false);
   useEffect(() => { try { const saved = window.localStorage.getItem(STORAGE_KEY); if (saved) { const parsed = JSON.parse(saved) as { transactions?: MoneyTransaction[]; budgets?: MoneyBudget[]; goals?: SavingsGoal[] }; if (parsed.transactions) setTransactions(parsed.transactions); if (parsed.budgets) setBudgets(parsed.budgets); if (parsed.goals) setGoals(parsed.goals); } } catch {} setReady(true); }, []);
-  useEffect(() => { if (ready) { try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ transactions, budgets, goals })); } catch {} } }, [transactions, budgets, goals, ready]);
+  useEffect(() => { if (ready) { try { setLocalStorageItem(STORAGE_KEY, JSON.stringify({ transactions, budgets, goals })); } catch {} } }, [transactions, budgets, goals, ready]);
   const value: MoneyContextValue = {
     transactions, budgets, goals,
     addTransaction(value) { setTransactions((current) => [{ ...value, id: crypto.randomUUID() }, ...current]); },

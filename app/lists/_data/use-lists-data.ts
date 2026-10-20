@@ -1,5 +1,7 @@
 "use client";
 
+import { setLocalStorageItem } from "@/app/_lib/local-storage";
+
 import {
   createContext,
   createElement,
@@ -266,7 +268,7 @@ export function ListsDataProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (ready) {
       try {
-        window.localStorage.setItem(
+        setLocalStorageItem(
           STORAGE_KEY,
           JSON.stringify({ lists, wishlist }),
         );

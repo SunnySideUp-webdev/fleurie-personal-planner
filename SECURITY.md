@@ -14,6 +14,8 @@ Include the affected route or feature, reproduction steps, expected impact, and 
 
 Fleurie is a client-side personal project with no application backend or authentication. Data and uploaded image data URLs are stored in the browser's `localStorage`.
 
+The PWA service worker caches application pages and static resources for offline access. It does not intentionally copy planner records from `localStorage` into the Cache API.
+
 - Fleurie does not encrypt local data.
 - Anyone with access to the same browser profile may be able to inspect that data.
 - Clearing browser site data can permanently remove planner records.

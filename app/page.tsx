@@ -1,5 +1,7 @@
 "use client";
 
+import { setLocalStorageItem } from "@/app/_lib/local-storage";
+
 import Link from "next/link";
 import {
   Bell, BookOpen, CalendarDays, Check, CircleDollarSign, Dumbbell, Ellipsis,
@@ -125,7 +127,7 @@ export default function TodayPage() {
 
   useEffect(() => {
     if (!ready) return;
-    window.localStorage.setItem("planner-today-v2", JSON.stringify({ littleReminders, journal, journalImage }));
+    setLocalStorageItem("planner-today-v2", JSON.stringify({ littleReminders, journal, journalImage }));
   }, [ready, littleReminders, journal, journalImage]);
 
   const currentDate = new Date();
@@ -190,7 +192,7 @@ export default function TodayPage() {
     const entries = JSON.parse(window.localStorage.getItem("noa-quick-journal-v1") ?? "[]") as unknown[];
     const quickEntry = { id: crypto.randomUUID(), text: journal.trim(), imageName: journalImage, mood: moodOptions[todayMood].label, createdAt: new Date().toISOString() };
     entries.push(quickEntry);
-    window.localStorage.setItem("noa-quick-journal-v1", JSON.stringify(entries));
+    setLocalStorageItem("noa-quick-journal-v1", JSON.stringify(entries));
     window.dispatchEvent(new CustomEvent("noa-quick-journal-added", { detail: quickEntry }));
     setJournal(""); setJournalImage(""); setSaved(true);
     window.setTimeout(() => { setSaved(false); journalSaveLock.current = false; }, 1800);
@@ -199,7 +201,7 @@ export default function TodayPage() {
   return (
     <main className="app-shell today-functional">
       <aside className={`sidebar ${mobileNav ? "is-open" : ""}`}>
-        <div className="brand-row"><img className="brand-logo" src="/daylily-logo.png" alt="Daylily" /><button className="mobile-close" onClick={() => setMobileNav(false)} aria-label="Close navigation"><X /></button></div>
+        <div className="brand-row"><img className="brand-logo" src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/daylily-logo.png`} alt="Daylily" /><button className="mobile-close" onClick={() => setMobileNav(false)} aria-label="Close navigation"><X /></button></div>
         <nav aria-label="Main navigation">{navItems.map(({ label, icon: Icon, href, active }) => <Link key={label} href={href} className={`nav-item ${active ? "active" : ""}`}><Icon size={24} strokeWidth={1.7} /><span>{label}</span></Link>)}</nav>
         <div className="sidebar-art-slot" aria-hidden="true"><span>Floral collage</span></div>
         <div className="profile-menu-wrap"><button className="profile-button" onClick={() => setProfileOpen((value) => !value)}><span className="avatar">S</span><span>Sunny</span><Settings size={20} /></button>{profileOpen && <div className="profile-popover"><strong>Sunny’s planner</strong><small>Your changes are saved automatically on this device.</small><Link href="/planner/planning">Open planning</Link></div>}</div>

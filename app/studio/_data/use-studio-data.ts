@@ -1,5 +1,7 @@
 "use client";
 
+import { setLocalStorageItem } from "@/app/_lib/local-storage";
+
 import { createContext, createElement, ReactNode, useContext, useEffect, useState } from "react";
 
 export type ClosetCategory = "Tops" | "Bottoms" | "Dresses" | "Outerwear" | "Shoes" | "Bags" | "Accessories";
@@ -116,7 +118,7 @@ export function StudioDataProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (ready) {
-      try { window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ closet, outfits, inspiration, occasionTags, starterVersion: 2 })); }
+      try { setLocalStorageItem(STORAGE_KEY, JSON.stringify({ closet, outfits, inspiration, occasionTags, starterVersion: 2 })); }
       catch { console.warn("Studio storage is full. Remove a few uploaded images before adding more."); }
     }
   }, [closet, outfits, inspiration, occasionTags, ready]);
@@ -129,7 +131,7 @@ export function StudioDataProvider({ children }: { children: ReactNode }) {
     saveOutfit(outfit) { const id = outfit.id || crypto.randomUUID(); setOutfits((current) => current.some((item) => item.id === id) ? current.map((item) => item.id === id ? { ...item, ...outfit, id } : item) : [{ ...outfit, id, createdAt: new Date().toISOString() }, ...current]); return id; },
     removeOutfit(id) { setOutfits((current) => current.filter((outfit) => outfit.id !== id)); },
     toggleFavoriteOutfit(id) { setOutfits((current) => current.map((outfit) => outfit.id === id ? { ...outfit, favorite: !outfit.favorite } : outfit)); },
-    assignOutfitToToday(id) { const outfit = outfits.find((item) => item.id === id); if (!outfit) return; window.localStorage.setItem("noa-today-outfit-v1", JSON.stringify({ outfitId: outfit.id, assignedDate: localDateKey(), savedAt: new Date().toISOString() })); },
+    assignOutfitToToday(id) { const outfit = outfits.find((item) => item.id === id); if (!outfit) return; setLocalStorageItem("noa-today-outfit-v1", JSON.stringify({ outfitId: outfit.id, assignedDate: localDateKey(), savedAt: new Date().toISOString() })); },
     addInspiration(item) { setInspiration((current) => [{ ...item, id: crypto.randomUUID() }, ...current]); },
     updateInspiration(id, update) { setInspiration((current) => current.map((item) => item.id === id ? { ...item, ...update } : item)); },
     removeInspiration(id) { setInspiration((current) => current.filter((item) => item.id !== id)); },

@@ -4,9 +4,23 @@ Notable changes to Fleurie Personal Planner are documented here. This project fo
 
 ## [Unreleased]
 
+### Added
+
+- Installable PWA manifest with standard, adaptive, and Apple home-screen icons.
+- Production-only service worker with offline access to previously opened pages and static resources.
+- Third-party dependency license notice.
+- GitHub Pages static-export workflow and portfolio screenshots.
+- User-facing warning when browser storage is full and the latest changes cannot be persisted.
+
+### Changed
+
+- Updated copyright attribution to Sharon (Sunny) Consuegra.
+- Recorded ownership and public portfolio permission for the visual assets.
+- Added repository-subpath support for public images, decorative backgrounds, application icons, navigation, and PWA scope.
+- Refined the mobile Today header so the date and Add action do not overlap.
+
 ### Planned
 
-- Prepare repository presentation and screenshots before public portfolio release.
 - Add a user-controlled data backup and restore flow.
 - Add automated tests and linting.
 
